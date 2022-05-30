@@ -10,7 +10,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
-    <name>escola1.0</name>
+    <name>escola</name>
     <dependencies>
         <dependency>
             <groupId>mysql</groupId>

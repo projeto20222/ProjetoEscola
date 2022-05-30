@@ -11,6 +11,8 @@ import java.util.List;
 
 public class DisciplinaDAO {
     Connection conn;
+    PreparedStatement ps;
+    ResultSet rs;
    
     public DisciplinaDAO()throws Exception{
         try {
@@ -28,7 +30,7 @@ public class DisciplinaDAO {
             throw new Exception("O valor passado no pode ser nulo");
         try {
             
-            String SQL = "INSERT INTO disciplina (nome, cargaHoraria, limiteAlunos) "+ "values (?, ?, ?)";
+            String SQL = "INSERT INTO disciplina (nome,  cargaHoraria, limiteAlunos) "+ "values (?, ?, ?)";
             conn = this.conn;
             ps = conn.prepareStatement(SQL);
             ps.setString(1, disciplina.getNome());

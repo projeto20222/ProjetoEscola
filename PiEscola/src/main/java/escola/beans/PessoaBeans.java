@@ -1,6 +1,6 @@
 package escola.beans;
 
-public class Pessoa {
+public class PessoaBeans {
         private Integer codigo;
 	private String nomePessoa;
 	private String endereco;
@@ -9,11 +9,11 @@ public class Pessoa {
 	private String cpf;
 	private String email;
 	
-	public Pessoa() {
+	public PessoaBeans() {
 		
 	}
 	
-	public Pessoa(Integer codigo, String nomePessoa, String endereco, String uf, String telefone, String cpf,
+	public PessoaBeans(Integer codigo, String nomePessoa, String endereco, String uf, String telefone, String cpf,
 			String email) {
 		super();
 		this.codigo = codigo;
@@ -103,7 +103,7 @@ public class Pessoa {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Pessoa other = (Pessoa) obj;
+		PessoaBeans other = (PessoaBeans) obj;
 		if (codigo == null) {
 			if (other.codigo != null)
 				return false;

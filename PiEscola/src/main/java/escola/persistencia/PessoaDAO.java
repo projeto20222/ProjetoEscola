@@ -1,6 +1,6 @@
 package escola.persistencia;
 
-import escola.beans.Pessoa;
+import escola.beans.PessoaBeans;
 import escola.util.Conexao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -22,7 +22,7 @@ public class PessoaDAO {
     
     }
     // INSERT PESSOA
-    public void salvarPessoa(Pessoa pess) throws Exception {
+    public void salvarPessoa(PessoaBeans pess) throws Exception {
         ps = null;
         conn = null;
         if(pess == null){
@@ -54,7 +54,7 @@ public class PessoaDAO {
     }
         // DELETE PESSOA 
         
-        public void Excluir(Pessoa pess) throws Exception{
+        public void Excluir(PessoaBeans pess) throws Exception{
             ps = null;
             conn = null;
             if(pess == null){
@@ -74,7 +74,7 @@ public class PessoaDAO {
             }
         }
         
-        public void atualizar(Pessoa pess) throws Exception{
+        public void atualizar(PessoaBeans pess) throws Exception{
             ps = null;
             conn = null;
             
@@ -118,7 +118,7 @@ public class PessoaDAO {
             conn = this.conn;
             ps = conn.prepareStatement("select * from pessoa");
             rs = ps.executeQuery( );
-            List<Pessoa> list = new ArrayList<Pessoa>();
+            List<PessoaBeans> list = new ArrayList<PessoaBeans>();
             while( rs.next( ) ) {
                 Integer codigo = rs.getInt(1);
                 String nomePessoa = rs.getString(2);
@@ -129,7 +129,7 @@ public class PessoaDAO {
                 String email = rs.getString(7);
                
              
-                list.add(new Pessoa(codigo,nomePessoa, endereco, uf, telefone, cpf, email) );
+                list.add(new PessoaBeans(codigo,nomePessoa, endereco, uf, telefone, cpf, email) );
             }
             return list;
         } catch (SQLException sqle) {
@@ -139,7 +139,7 @@ public class PessoaDAO {
         }
     }
         
-    public Pessoa procurarPessoa(Integer id) throws  Exception {
+    public PessoaBeans procurarPessoa(Integer id) throws  Exception {
         PreparedStatement ps = null;
         Connection conn = null;
         ResultSet rs = null;
@@ -160,7 +160,7 @@ public class PessoaDAO {
             
             
             
-            return new Pessoa(id ,nomePessoa, endereco, uf, telefone, cpf, email);
+            return new PessoaBeans(id ,nomePessoa, endereco, uf, telefone, cpf, email);
         } catch (SQLException sqle) {
             throw new  Exception(sqle);
         } finally {

@@ -4,14 +4,14 @@ public class DisciplinaBeans {
         private Integer codigo;
 	private String nome;
 	private Integer cargaHoraria;
-	private Integer professorCod;
+	private PessoaBeans professorCod;
 	private Integer limiteAlunos;
 	
 	public DisciplinaBeans() {
 		
 	}
 	
-	public DisciplinaBeans(Integer codigo, String nome, Integer cargaHoraria, Integer professorCod, Integer limiteAlunos) {
+	public DisciplinaBeans(Integer codigo, String nome, Integer cargaHoraria,PessoaBeans professorCod, Integer limiteAlunos) {
 		super();
 		this.codigo = codigo;
 		this.nome = nome;
@@ -48,11 +48,11 @@ public class DisciplinaBeans {
 		this.cargaHoraria = cargaHoraria;
 	}
 
-	public Integer getProfessorCod() {
+	public PessoaBeans getProfessorCod() {
 		return professorCod;
 	}
 
-	public void setProfessorCod(Integer professorCod) {
+	public void setProfessorCod(PessoaBeans professorCod) {
 		this.professorCod = professorCod;
 	}
 

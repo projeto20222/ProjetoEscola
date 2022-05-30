@@ -5,8 +5,10 @@
 package escola.views;
 
 import escola.beans.DisciplinaBeans;
+import escola.persistencia.DisciplinaDAO;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -43,7 +45,7 @@ public class DisciplinaViews extends javax.swing.JFrame {
         txtNome = new javax.swing.JTextField();
         txtLimite = new javax.swing.JTextField();
         btn_return = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnSalvar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -91,10 +93,10 @@ public class DisciplinaViews extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(0, 153, 51));
-        jButton2.setText("Salvar");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnSalvar.setBackground(new java.awt.Color(0, 153, 51));
+        btnSalvar.setText("Salvar");
+        btnSalvar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_salvar(evt);
             }
@@ -160,7 +162,7 @@ public class DisciplinaViews extends javax.swing.JFrame {
                         .addGap(35, 35, 35)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btn_return, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -194,7 +196,7 @@ public class DisciplinaViews extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_return, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -239,11 +241,18 @@ public class DisciplinaViews extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_returnActionPerformed
 
     private void btn_salvar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvar
-       
+      
         try {
            DisciplinaBeans disc = new DisciplinaBeans();
            disc.setNome(txtNome.getText());
-           disc.setCargaHoraria(txtCarga.getText());
+           disc.setCargaHoraria(Integer.parseInt(txtCarga.getText()));
+           disc.setLimiteAlunos(Integer.parseInt(txtLimite.getText()));
+           disc.setProfessorCod(Integer.parseInt(txtProfessor.getText()));
+            
+           DisciplinaDAO discDAO = new DisciplinaDAO();
+           
+           discDAO.salvar(disc);
+           JOptionPane.showMessageDialog(null,"Operação Concluída com Sucesso","Inclusão",JOptionPane.INFORMATION_MESSAGE);
             
         } catch (Exception ex) {
             Logger.getLogger(DisciplinaViews.class.getName()).log(Level.SEVERE, null, ex);
@@ -289,9 +298,9 @@ public class DisciplinaViews extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btn_return;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
